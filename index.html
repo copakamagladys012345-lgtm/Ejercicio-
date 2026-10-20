@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atletismo Educativo | Domina el Arte del Atletismo en Casa</title>
+<style>
+:root {
+  --purple-dark: #3a155a;
+  --purple-primary: #6c5ce7;
+  --purple-light: #a29bfe;
+  --pastel-purple: #f3e8ff;
+  --pastel-pink: #ffeaa7;
+  --pastel-accent: #e84393;
+  --bg-main: #f8f6ff;
+  --card-bg: #ffffff;
+  --text-dark: #2d3436;
+  --text-muted: #636e72;
+  --success: #00b894;
+  --error: #d63031;
+}
+
+* { box-sizing: border-box; scroll-behavior: smooth; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { margin: 0; background: var(--bg-main); color: var(--text-dark); line-height: 1.6; }
+
+/* NAVEGACIÓN */
+header { background: var(--purple-dark); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 15px rgba(58, 21, 90, 0.2); }
+.nav { max-width: 1200px; margin: auto; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.2rem; }
+.logo-icon { width: 45px; height: 45px; background: var(--purple-light); border-radius: 50%; display: grid; place-items: center; font-size: 24px; border: 2px solid var(--pastel-pink); }
+nav { display: flex; gap: 10px; flex-wrap: wrap; }
+nav a { color: white; text-decoration: none; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; transition: all 0.3s; }
+nav a:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+
+/* HERO SECTION */
+.hero { background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-primary) 60%, var(--purple-light) 100%); color: white; padding: 80px 20px; border-radius: 0 0 30px 30px; }
+.hero-inner { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 40px; }
+.eyebrow { background: var(--pastel-purple); color: var(--purple-dark); font-weight: 800; font-size: 12px; text-transform: uppercase; padding: 6px 14px; border-radius: 15px; display: inline-block; margin-bottom: 10px; }
+h1 { font-size: clamp(32px, 5vw, 50px); line-height: 1.15; margin: 10px 0; font-weight: 900; }
+.hero p { font-size: 18px; color: var(--pastel-purple); max-width: 600px; margin-bottom: 25px; }
+.hero-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 24px; padding: 30px; text-align: center; font-size: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+/* BOTONES */
+.btn { display: inline-block; border: none; border-radius: 25px; background: var(--purple-primary); color: white; font-weight: 700; padding: 12px 24px; text-decoration: none; cursor: pointer; font-size: 15px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3); }
+.btn:hover { background: #5b4cc4; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4); }
+.btn-accent { background: var(--pastel-accent); color: white; }
+.btn-accent:hover { background: #d63384; }
+
+/* SECCIONES GENERICAS */
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+.section-head { text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(28px, 4vw, 38px); color: var(--purple-dark); margin-bottom: 10px; font-weight: 800; }
+.section-head p { color: var(--text-muted); font-size: 16px; max-width: 600px; margin: auto; }
+
+/* CALCULADORA DE ENTRENAMIENTO PERSONALIZADO */
+.calculator-box { background: var(--card-bg); border-radius: 24px; padding: 30px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.1); border: 2px solid var(--pastel-purple); margin-bottom: 40px; }
+.calc-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
+.calc-field label { display: block; font-weight: 700; color: var(--purple-dark); margin-bottom: 8px; }
+.calc-field input, .calc-field select { width: 100%; padding: 12px; border-radius: 12px; border: 2px solid var(--pastel-purple); font-size: 15px; outline: none; }
+.calc-field input:focus { border-color: var(--purple-primary); }
+
+/* TARJETAS DE CATEGORÍA FITNESS */
+.fitness-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.f-card { background: var(--card-bg); border-radius: 24px; padding: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border: 2px solid var(--pastel-purple); position: relative; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+.f-card:hover { transform: translateY(-5px); border-color: var(--purple-primary); box-shadow: 0 12px 30px rgba(108, 92, 231, 0.15); }
+.f-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+.f-card-icon { font-size: 40px; background: var(--pastel-purple); padding: 10px; border-radius: 18px; }
+.f-badge { background: var(--pastel-pink); color: #8a6d00; font-weight: 800; font-size: 12px; padding: 6px 12px; border-radius: 12px; }
+.f-card h3 { color: var(--purple-dark); margin: 0 0 10px 0; font-size: 22px; }
+.f-stats { display: flex; gap: 15px; background: var(--bg-main); padding: 10px 15px; border-radius: 12px; margin: 15px 0; font-size: 13px; font-weight: 700; color: var(--purple-dark); }
+
+/* MÉTODOS DE ENTRENAMIENTO */
+.methods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+.m-card { background: var(--card-bg); border-radius: 20px; padding: 25px; border-left: 6px solid var(--purple-primary); box-shadow: 0 6px 20px rgba(0,0,0,0.04); }
+.m-card h3 { color: var(--purple-dark); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+.m-list { list-style: none; padding: 0; margin: 15px 0 0 0; }
+.m-list li { padding: 8px 0; border-bottom: 1px dashed var(--pastel-purple); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+
+/* CRONÓMETRO E INTERACTIVOS */
+.timer-box { background: linear-gradient(135deg, var(--purple-primary), var(--purple-dark)); color: white; padding: 30px; border-radius: 24px; text-align: center; margin-top: 40px; box-shadow: 0 10px 25px rgba(108, 92, 231, 0.3); }
+.timer-display { font-size: 50px; font-weight: 900; letter-spacing: 2px; margin: 15px 0; font-family: monospace; }
+.timer-controls { display: flex; justify-content: center; gap: 10px; }
+
+/* MINIJUEGO INTERACTIVO */
+.quiz-container { background: var(--card-bg); border-radius: 24px; padding: 35px; box-shadow: 0 10px 30px rgba(108, 92, 231, 0.1); border: 2px solid var(--pastel-purple); max-width: 800px; margin: auto; }
+.quiz-progress { background: var(--pastel-purple); height: 10px; border-radius: 5px; margin-bottom: 25px; overflow: hidden; }
+.quiz-progress-bar { background: var(--pastel-accent); height: 100%; width: 0%; transition: width 0.3s; }
+.quiz-option { display: block; background: var(--bg-main); border: 2px solid var(--pastel-purple); padding: 15px 20px; border-radius: 16px; margin: 12px 0; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+.quiz-option:hover { background: var(--pastel-purple); border-color: var(--purple-primary); }
+.quiz-option input { display: none; }
+.quiz-option.selected { background: var(--purple-light); color: white; border-color: var(--purple-primary); }
+.quiz-score-board { text-align: center; font-size: 24px; font-weight: 800; color: var(--purple-dark); }
+
+/* MODAL */
+.modal { position: fixed; inset: 0; background: rgba(45, 21, 75, 0.7); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 200; backdrop-filter: blur(5px); }
+.modal.show { display: flex; }
+.modal-box { background: white; max-width: 650px; width: 100%; padding: 35px; border-radius: 28px; position: relative; max-height: 90vh; overflow-y: auto; }
+.close-btn { position: absolute; right: 20px; top: 20px; border: none; background: var(--pastel-purple); color: var(--purple-dark); border-radius: 50%; width: 40px; height: 40px; font-size: 20px; font-weight: bold; cursor: pointer; }
+
+footer { background: var(--purple-dark); color: var(--pastel-purple); text-align: center; padding: 30px 20px; margin-top: 60px; font-size: 14px; }
+
+@media(max-width:768px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero p { margin: 0 auto 25px auto; }
+  .timer-display { font-size: 38px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="logo-icon" style="overflow:hidden; padding:0;"><img src="images/logo.jpg" alt="Logo Atletismo Educativo" style="width:100%; height:100%; object-fit:cover; object-position:center 35%; border-radius:50%; display:block;"></div>
+      <div>Atletismo Educativo <span style="font-size:10px; display:block; color:var(--pastel-purple);">Domina el arte del atletismo en casa</span></div>
+    </div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#personalizar">Tu Plan</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#entrenamiento">Métodos</a>
+      <a href="#minijuego">Minijuego</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow">Aprende · Entrena · Domina</span>
+        <h1>Una forma divertida de dominar el arte del atletismo</h1>
+        <p>Aprende las mejores técnicas de carrera, saltos y lanzamientos desde la comodidad de tu hogar. Adaptado a tu peso corporal y espacio disponible.</p>
+        <a class="btn btn-accent" href="#personalizar">¡Empezar mi entrenamiento! ↓</a>
+      </div>
+      <div class="hero-card">
+        <img src="images/entrenamiento-en-casa.jpg" alt="Entrenamiento en casa" style="width:100%; height:auto; border-radius:16px; display:block;">
+        <div style="font-size:16px; color:white; margin-top:10px; font-weight:700;">¡Entrenamiento en Casa!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA / ADAPTACIÓN EN CASA -->
+  <section id="personalizar">
+    <div class="calculator-box">
+      <div class="section-head" style="margin-bottom:20px;">
+        <h2>Ajusta tu Entrenamiento Corporal</h2>
+        <p>Introduce tus datos para adaptar los ejercicios de atletismo al peso corporal e intensidad recomendada.</p>
+      </div>
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label>Peso aproximado (kg)</label>
+          <input type="number" id="userWeight" placeholder="Ej: 55" value="55" oninput="calcularPlan()">
+        </div>
+        <div class="calc-field">
+          <label>Nivel de Experiencia</label>
+          <select id="userLevel" onchange="calcularPlan()">
+            <option value="principiante">Principiante (Inicio en casa)</option>
+            <option value="intermedio">Intermedio (Regular)</option>
+            <option value="avanzado">Avanzado (Atleta activo)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Espacio disponible</label>
+          <select id="userSpace" onchange="calcularPlan()">
+            <option value="cuarto">Habitación / Espacio reducido</option>
+            <option value="patio">Patio pequeño / Garaje</option>
+            <option value="jardin">Jardín o Pasillo largo</option>
+          </select>
+        </div>
+      </div>
+      <div id="planResult" style="margin-top:20px; padding:15px; background:var(--pastel-purple); border-radius:16px; color:var(--purple-dark); font-weight:600;">
+        💡 <strong>Recomendación adaptada:</strong> Ingresa tus datos arriba para ver el ajuste del entrenamiento.
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS TIPO FITNESS -->
+  <section id="categorias">
+    <div class="section-head">
+      <h2>Programas por Categoría</h2>
+      <p>Selecciona tu nivel de edad y descubre rutinas diseñadas como tus apps de fitness favoritas.</p>
+    </div>
+    <div class="fitness-cards">
+
+      <!-- INFANTIL -->
+      <div class="f-card">
+        <div>
+          <div class="f-card-header">
+            <div class="f-card-icon">🧒</div>
+            <span class="f-badge">6 – 11 AÑOS</span>
+          </div>
+          <h3>Categoría Infantil</h3>
+          <p>Desarrollo motriz divertido, coordinación de zancada, técnica de impulso y saltos suaves sin impacto articular excesivo.</p>
+          <div class="f-stats">
+            <span>⏱️ 15-20 min</span>
+            <span>🔥 Bajo Impacto</span>
+            <span>🏠 Espacio Pequeño</span>
+          </div>
+        </div>
+        <button class="btn" onclick="verCategoria('Infantil')">Ver Plan Interactivo</button>
+      </div>
+
+      <!-- CADETES -->
+      <div class="f-card">
+        <div>
+          <div class="f-card-header">
+            <div class="f-card-icon">🏃‍♂️</div>
+            <span class="f-badge">12 – 14 AÑOS</span>
+          </div>
+          <h3>Categoría Cadetes</h3>
+          <p>Iniciación a la velocidad reactiva, postura aerodinámica de carrera y potencia de despegue para saltos.</p>
+          <div class="f-stats">
+            <span>⏱️ 25-35 min</span>
+            <span>🔥 Impacto Medio</span>
+            <span>🏠 Patio / Sala</span>
+          </div>
+        </div>
+        <button class="btn" onclick="verCategoria('Cadetes')">Ver Plan Interactivo</button>
+      </div>
+
+      <!-- JUVENILES -->
+      <div class="f-card">
+        <div>
+          <div class="f-card-header">
+            <div class="f-card-icon">🏅</div>
+            <span class="f-badge">15 – 17 AÑOS</span>
+          </div>
+          <h3>Categoría Juveniles</h3>
+          <p>Perfeccionamiento de la técnica de zancada alta, ejercicios pliométricos intensos y optimización de fuerza explosiva.</p>
+          <div class="f-stats">
+            <span>⏱️ 40-50 min</span>
+            <span>🔥 Alta Intensidad</span>
+            <span>🏠 Entrenamiento Casa</span>
+          </div>
+        </div>
+        <button class="btn" onclick="verCategoria('Juveniles')">Ver Plan Interactivo</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MÉTODOS DE ENTRENAMIENTO -->
+  <section id="entrenamiento">
+    <div class="section-head">
+      <h2>Métodos de Entrenamiento Guiados</h2>
+      <p>Estrategias científicas adaptadas para hacer en casa sin necesidad de pistas ni equipamiento pesado.</p>
+    </div>
+    <div class="methods-grid">
+      
+      <div class="m-card">
+        <h3>⏱️ Método Continuo Estático</h3>
+        <p>Trabaja la resistencia aeróbica sin salir de tu sala o patio.</p>
+        <ul class="m-list">
+          <li>🏃 <strong>Trote en el sitio con Skipping alto:</strong> Mantenimiento de ritmo.</li>
+          <li>🧘 <strong>Control del Core:</strong> Espalda recta y braceo a 90 grados.</li>
+          <li>🎯 <strong>Objetivo:</strong> 3 series de 5 a 8 minutos continuos.</li>
+        </ul>
+      </div>
+
+      <div class="m-card">
+        <h3>🔁 Método Fraccionado / HIIT Casa</h3>
+        <p>Alterna ráfagas de alta velocidad con descansos breves para mejorar la aceleración.</p>
+        <ul class="m-list">
+          <li>⚡ <strong>Sprints estáticos (20 seg):</strong> Máxima frecuencia de pies.</li>
+          <li>⏸️ <strong>Pausa activa (40 seg):</strong> Caminata lenta y respiración.</li>
+          <li>🎯 <strong>Objetivo:</strong> Mejorar la potencia anaeróbica en espacios reducidos.</li>
+        </ul>
+      </div>
+
+      <div class="m-card">
+        <h3>⬆️ Pliometría y Fuerza Corporal</h3>
+        <p>Aprovecha tu propio peso para mejorar tu capacidad de salto y empuje.</p>
+        <ul class="m-list">
+          <li>🚀 <strong>Saltos verticales con amortiguación suave:</strong> Técnica de caída.</li>
+          <li>🦵 <strong>Zancadas explosivas (Lunges):</strong> Fortalecimiento de cuádriceps y glúteos.</li>
+          <li>🎯 <strong>Objetivo:</strong> Mayor potencia en despegue de saltos de longitud.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CRONÓMETRO INTEGRADO -->
+    <div class="timer-box">
+      <h3>⏱️ Cronómetro de Entrenamiento</h3>
+      <p>Utilízalo para medir tus series de ejercicios en casa.</p>
+      <div class="timer-display" id="timerDisplay">00:00.0</div>
+      <div class="timer-controls">
+        <button class="btn btn-accent" onclick="startTimer()">Iniciar</button>
+        <button class="btn" style="background:rgba(255,255,255,0.2);" onclick="pauseTimer()">Pausar</button>
+        <button class="btn" style="background:rgba(255,255,255,0.2);" onclick="resetTimer()">Reiniciar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINIJUEGO INTERACTIVO -->
+  <section id="minijuego">
+    <div class="section-head">
+      <h2>🎮 Minijuego: Pon a Prueba tus Conocimientos</h2>
+      <p>Responde a las preguntas interactivas y demuestra cuánto has aprendido sobre la técnica del atletismo.</p>
+    </div>
+
+    <div class="quiz-container">
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+      </div>
+      <div id="quizBody">
+        <!-- Contenido dinámico cargado con JavaScript -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Atletismo Educativo · Una forma divertida de dominar el arte del atletismo en casa.<br>
+  Diseñado en tonos morados y pasteles para un aprendizaje ágil, intuitivo y dinámico.
+</footer>
+
+<!-- MODAL PARA MOSTRAR DETALLES DE LAS CATEGORÍAS FITNESS -->
+<div class="modal" id="modalCategory" onclick="cerrarModalFuera(event)">
+  <div class="modal-box">
+    <button class="close-btn" onclick="cerrarModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+/* ==================== CALCULADORA DE PLAN ==================== */
+function calcularPlan() {
+  const peso = parseFloat(document.getElementById('userWeight').value) || 50;
+  const nivel = document.getElementById('userLevel').value;
+  const espacio = document.getElementById('userSpace').value;
+  const planResult = document.getElementById('planResult');
+
+  let reps = "3 series de 10 reps";
+  let descanso = "60 segundos";
+  let enfoque = "Técnica fluida y control del equilibrio.";
+
+  if (peso > 70) {
+    enfoque += " Énfasis en amortiguación suave al aterrizar para proteger rodillas.";
+  } else {
+    enfoque += " Trabajo enfocado en velocidad reactiva y frecuencia de zancada.";
+  }
+
+  if (nivel === 'intermedio') {
+    reps = "4 series de 15 reps";
+    descanso = "45 segundos";
+  } else if (nivel === 'avanzado') {
+    reps = "5 series de 20 reps (Alta intensidad)";
+    descanso = "30 segundos";
+  }
+
+  planResult.innerHTML = `
+    <strong>📊 Tu plan personalizado para casa:</strong><br>
+    • <strong>Ajuste de volumen:</strong> ${reps} con descanso de ${descanso}.<br>
+    • <strong>Espacio adaptado (${espacio}):</strong> ${espacio === 'cuarto' ? 'Aprovecha ejercicios estáticos (Skipping, Saltos verticales, Sentadillas).' : 'Puedes realizar aceleraciones breves de 5 a 10 metros.'}<br>
+    • <strong>Consejo según peso corporal (${peso}kg):</strong> ${enfoque}
+  `;
+}
+calcularPlan();
+
+/* ==================== DATOS Y MODAL DE CATEGORÍAS ==================== */
+const datosCategorias = {
+  Infantil: {
+    titulo: "👧 Categoría Infantil (6–11 años)",
+    sub: "Aprende jugando en casa",
+    ejercicios: [
+      { nombre: "El Cerdito Saltador", desc: "Saltos pies juntos sobre una marca de cinta en el suelo. Amortigua flexionando rodillas.", reps: "3 series x 10 saltos" },
+      { nombre: "Braceo del Maratonista", desc: "Sentado en el suelo, mueve los brazos en un ángulo de 90° rápido sin mover el torso.", reps: "3 series x 15 segundos" },
+      { nombre: "Carrera de Reacción", desc: "Sentado en el suelo, al oír una señal, levántate lo más rápido posible y da 3 pasos veloces.", reps: "5 repeticiones" }
+    ],
+    consejo: "Recuerda beber agua y mantener una postura erguida durante todos los ejercicios."
+  },
+  Cadetes: {
+    titulo: "🏃‍♂️ Categoría Cadetes (12–14 años)",
+    sub: "Fuerza reactiva y técnica de despegue",
+    ejercicios: [
+      { nombre: "Skipping Alto Estático", desc: "Eleva las rodillas a 90 grados a alta frecuencia manteniendo la espalda recta.", reps: "4 series x 20 segundos" },
+      { nombre: "Salto Horizontal con Pausa", desc: "Salta hacia adelante lo más lejos posible y mantén el equilibrio al caer durante 2 seg.", reps: "4 series x 6 saltos" },
+      { nombre: "Zancadas Explosivas (Lunges)", desc: "Paso adelante bajando la cadera y regresa impulsándote con fuerza en el talón.", reps: "3 series x 12 reps por pierna" }
+    ],
+    consejo: "Mantén la mirada al frente al saltar para no perder el centro de gravedad."
+  },
+  Juveniles: {
+    titulo: "🏅 Categoría Juveniles (15–17 años)",
+    sub: "Potencia, pliometría y aceleración",
+    ejercicios: [
+      { nombre: "Saltos Pliométricos a Caja/Escalón", desc: "Salto explosivo sobre una superficie firme y caída amortiguada.", reps: "4 series x 8 reps" },
+      { nombre: "Salida de Taco Plegado", desc: "Simulación de salida rápida en velocidad desde posición inclinada en el suelo.", reps: "5 salidas explosivas" },
+      { nombre: "Skipping con Resistencia Corporal", desc: "Skipping intenso manteniendo tensión en el abdomen (core).", reps: "4 series x 30 segundos" }
+    ],
+    consejo: "Prioriza la velocidad de ejecución sin perder la forma técnica del ejercicio."
+  }
+};
+
+function verCategoria(cat) {
+  const data = datosCategorias[cat];
+  let html = `
+    <h2 style="color:var(--purple-dark); margin-top:0;">${data.titulo}</h2>
+    <p style="color:var(--text-muted); font-weight:600;">${data.sub}</p>
+    <hr style="border:0; border-top:2px solid var(--pastel-purple); margin:15px 0;">
+    <h3 style="color:var(--purple-primary);">Rutina Guiada de Ejercicios:</h3>
+  `;
+
+  data.ejercicios.forEach((ej, idx) => {
+    html += `
+      <div style="background:var(--bg-main); padding:15px; border-radius:16px; margin-bottom:12px; border-left:4px solid var(--purple-primary);">
+        <div style="font-weight:800; color:var(--purple-dark); font-size:16px;">${idx + 1}. ${ej.nombre}</div>
+        <div style="font-size:14px; color:var(--text-dark); margin:5px 0;">${ej.desc}</div>
+        <span style="background:var(--pastel-pink); color:#8a6d00; font-size:12px; font-weight:800; padding:3px 8px; border-radius:8px;">${ej.reps}</span>
+      </div>
+    `;
+  });
+
+  html += `
+    <div style="background:var(--pastel-purple); color:var(--purple-dark); padding:12px; border-radius:12px; font-size:13px; font-weight:700; margin-top:15px;">
+      💡 Consejo del Entrenador: ${data.consejo}
+    </div>
+    <button class="btn btn-accent" style="margin-top:20px; width:100%;" onclick="cerrarModal()">¡Entrenamiento Entendido!</button>
+  `;
+
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalCategory').classList.add('show');
+}
+
+function cerrarModal() {
+  document.getElementById('modalCategory').classList.remove('show');
+}
+function cerrarModalFuera(e) {
+  if (e.target.id === 'modalCategory') cerrarModal();
+}
+
+/* ==================== CRONÓMETRO ==================== */
+let timerInterval;
+let elapsedTime = 0;
+
+function updateTimerDisplay() {
+  const mins = Math.floor(elapsedTime / 60000);
+  const secs = Math.floor((elapsedTime % 60000) / 1000);
+  const ms = Math.floor((elapsedTime % 1000) / 100);
+  document.getElementById('timerDisplay').textContent = 
+    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms}`;
+}
+
+function startTimer() {
+  if (timerInterval) return;
+  const startTime = Date.now() - elapsedTime;
+  timerInterval = setInterval(() => {
+    elapsedTime = Date.now() - startTime;
+    updateTimerDisplay();
+  }, 100);
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+}
+
+function resetTimer() {
+  pauseTimer();
+  elapsedTime = 0;
+  updateTimerDisplay();
+}
+
+/* ==================== MINIJUEGO INTERACTIVO ==================== */
+const preguntasQuiz = [
+  {
+    pregunta: "1. ¿Cuál es el ángulo de despegue recomendado como referencia ideal en el salto de longitud?",
+    opciones: ["10° a 12°", "20° a 25°", "45° exactos", "60° hacia arriba"],
+    correcta: 1,
+    explicacion: "¡Correcto! Un ángulo de unos 20° a 25° permite combinar la velocidad horizontal máxima adquirida en la carrera con la fuerza de elevación vertical."
+  },
+  {
+    pregunta: "2. ¿Cómo deben posicionarse los brazos al correr para mantener la máxima eficiencia?",
+    opciones: ["Flexionados a 90° balanceándose alternadamente", "Extendidos hacia abajo completamente rígidos", "Cruzando el pecho de lado a lado", "Inmóviles pegados a las caderas"],
+    correcta: 0,
+    explicacion: "¡Excelente! Los brazos flexionados a 90° ayudan a estabilizar el torso e impulsan el ritmo de la zancada de las piernas."
+  },
+  {
+    pregunta: "3. Si estás entrenando en un espacio reducido en casa, ¿cuál es el mejor ejercicio para simular aceleración?",
+    opciones: ["Permanecer acostado boca arriba", "Skipping veloz en el sitio apoyando el metatarso", "Caminar despacio tocándose los talones", "Dar vueltas en un espacio estrecho"],
+    correcta: 1,
+    explicacion: "¡Muy bien! El skipping estático a alta frecuencia activa los mismos grupos musculares de impulso que una aceleración de velocidad en pista."
+  },
+  {
+    pregunta: "4. ¿Qué parte del pie debe hacer el primer contacto con el suelo durante una carrera de velocidad?",
+    opciones: ["El talón fuertemente", "El borde lateral únicamente", "La parte delantera (metatarso / almohadilla del pie)", "Toda la planta del pie plana al mismo tiempo"],
+    correcta: 2,
+    explicacion: "¡Exacto! Correr sobre el metatarso permite actuar como un resorte, amortiguando e impulsando el cuerpo de inmediato hacia adelante."
+  }
+];
+
+let preguntaActual = 0;
+let puntaje = 0;
+let opcionSeleccionada = null;
+
+function renderQuiz() {
+  const quizBody = document.getElementById('quizBody');
+  const progress = document.getElementById('quizProgressBar');
+
+  if (preguntaActual >= preguntasQuiz.length) {
+    progress.style.width = '100%';
+    quizBody.innerHTML = `
+      <div class="quiz-score-board">
+        🏆 ¡Minijuego Completado!
+        <p style="font-size:18px; margin:15px 0; color:var(--text-dark);">
+          Tu puntuación final: <strong>${puntaje} de ${preguntasQuiz.length} correctas</strong>
+        </p>
+        <p style="font-size:15px; color:var(--text-muted);">
+          ${puntaje === preguntasQuiz.length ? '¡Increíble! Eres un maestro del atletismo educativo.' : '¡Buen intento! Revisa los contenidos y vuelve a poner a prueba tus conocimientos.'}
+        </p>
+        <button class="btn btn-accent" onclick="reiniciarQuiz()">Jugar de Nuevo 🔄</button>
+      </div>
+    `;
+    return;
+  }
+
+  progress.style.width = `${(preguntaActual / preguntasQuiz.length) * 100}%`;
+  const q = preguntasQuiz[preguntaActual];
+
+  let html = `<h3 style="color:var(--purple-dark); font-size:20px; margin-top:0;">${q.pregunta}</h3>`;
+
+  q.opciones.forEach((opt, idx) => {
+    html += `
+      <div class="quiz-option" id="opt-${idx}" onclick="seleccionarOpcion(${idx})">
+        ${opt}
+      </div>
+    `;
+  });
+
+  html += `
+    <div id="quizFeedback" style="margin-top:15px; font-weight:700;"></div>
+    <button class="btn" style="margin-top:20px; width:100%;" onclick="comprobarRespuestaQuiz()">Comprobar Respuesta</button>
+  `;
+
+  quizBody.innerHTML = html;
+  opcionSeleccionada = null;
+}
+
+function seleccionarOpcion(idx) {
+  opcionSeleccionada = idx;
+  document.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById(`opt-${idx}`).classList.add('selected');
+}
+
+function comprobarRespuestaQuiz() {
+  const feedback = document.getElementById('quizFeedback');
+  if (opcionSeleccionada === null) {
+    feedback.innerHTML = '<span style="color:var(--error);">⚠️ Elige una opción antes de comprobar.</span>';
+    return;
+  }
+
+  const q = preguntasQuiz[preguntaActual];
+  if (opcionSeleccionada === q.correcta) {
+    puntaje++;
+    feedback.innerHTML = `<span style="color:var(--success);">🎉 ${q.explicacion}</span>`;
+  } else {
+    feedback.innerHTML = `<span style="color:var(--error);">❌ Respuesta incorrecta.</span> <br><small style="color:var(--text-dark);">${q.explicacion}</small>`;
+  }
+
+  setTimeout(() => {
+    preguntaActual++;
+    renderQuiz();
+  }, 2500);
+}
+
+function reiniciarQuiz() {
+  preguntaActual = 0;
+  puntaje = 0;
+  renderQuiz();
+}
+
+// Carga inicial del minijuego
+renderQuiz();
+</script>
+</body>
+</html>
